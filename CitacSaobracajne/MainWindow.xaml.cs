@@ -28,6 +28,7 @@ namespace CitacSaobracajne
             InitializeComponent();
 
         }
+        AllData data;
 
         private void Content_Rendered(object sender, EventArgs e)
         {
@@ -56,9 +57,9 @@ namespace CitacSaobracajne
             ReaderDescriptor descriptor = (ReaderDescriptor)CBReaderSelector.SelectedValue;
             try
             {
-                var data = SaobracajnaReader.ReadAll(descriptor);
+                data = SaobracajnaReader.ReadAll(descriptor);
                 TBDrzavaIzdavanja.Text = data.DocumentData.StateIssuing;
-                TBDokumentIzdao.Text = data.DocumentData.AuthorityIssuing;
+                TBDokumentIzdao.Text = data.DocumentData.AuthorityIssuing + ", " + data.DocumentData.CompetentAuthority;
                 TBDatumIzdavanja.Text = data.DocumentData.IssuingDate;
                 TBVaziDo.Text = data.DocumentData.ExpiryDate;
                 TBZabranaOtudjenja.Text = data.VehicleData.RestrictionToChangeOwner;
@@ -98,6 +99,49 @@ namespace CitacSaobracajne
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void PrintButtonClickHandler(object sender, RoutedEventArgs e)
+        {
+            PrintWindow printWindow = new PrintWindow();
+            printWindow.TBRegistarskaOznaka.Text = data.VehicleData.RegistrationNumberOfVehicle;
+            printWindow.TBDatumIzdavanja.Text = data.DocumentData.IssuingDate;
+            printWindow.TBSaobracajnuIzdao.Text = data.DocumentData.StateIssuing;
+            printWindow.TBIzdavalac.Text = data.DocumentData.AuthorityIssuing + ",";
+            printWindow.TBKompetent.Text = data.DocumentData.CompetentAuthority;
+            printWindow.TBVaziDo.Text = data.DocumentData.ExpiryDate;
+            printWindow.TBZabranaOtudjenja.Text = data.VehicleData.RestrictionToChangeOwner;
+            printWindow.TBBrojSaobracajne.Text = data.DocumentData.UnambiguousNumber;
+            printWindow.TBSerijskiBroj.Text = data.DocumentData.SerialNumber;
+            printWindow.TBVlasnik.Text = data.PersonalData.OwnersSurnameOrBusinessName;
+            printWindow.TBImeVlasnika.Text = data.PersonalData.OwnerName;
+            printWindow.TBAdresaVlasnika.Text = data.PersonalData.OwnerAddress;
+            printWindow.TBJMBGVlasnika.Text = data.PersonalData.OwnersPersonalNo;
+            printWindow.TBKorisnik.Text = data.PersonalData.UsersSurnameOrBusinessName;
+            printWindow.TBImeKorisnika.Text = data.PersonalData.UsersName;
+            printWindow.TBAdresaKorisnika.Text = data.PersonalData.UsersAddress;
+            printWindow.TBJMBGKorisnika.Text = data.PersonalData.UsersPersonalNo;
+            printWindow.TBDatumPrveRegistracije.Text = data.VehicleData.DateOfFirstRegistration;
+            printWindow.TBGodinaProizvodnje.Text = data.VehicleData.YearOfProduction;
+            printWindow.TBMarka.Text = data.VehicleData.VehicleMake;
+            printWindow.TBModel.Text = data.VehicleData.CommercialDescription;
+            printWindow.TBTip.Text = data.VehicleData.VehicleType;
+            printWindow.TBHomologacijskaOznaka.Text = data.VehicleData.TypeApprovalNumber;
+            printWindow.TBBoja.Text = data.VehicleData.ColourOfVehicle;
+            printWindow.TBBrojSasije.Text = data.VehicleData.VehicleIDNumber;
+            printWindow.TBBrojMotora.Text = data.VehicleData.EngineIDNumber;
+            printWindow.TBSnagaMotora.Text = data.VehicleData.MaximumNetPower;
+            printWindow.TBOdnosSnagaMasa.Text = data.VehicleData.PowerWeightRatio;
+            printWindow.TBKAtegorija.Text = data.VehicleData.VehicleCategory;
+            printWindow.TBBrojOsovina.Text = data.VehicleData.NumberOfAxles;
+            printWindow.TBZapreminaMotora.Text = data.VehicleData.EngineCapacity;
+            printWindow.TBMasa.Text = data.VehicleData.VehicleMass;
+            printWindow.TBNosivost.Text = data.VehicleData.VehicleLoad;
+            printWindow.TBNajvecaDozvoljenaMasa.Text = data.VehicleData.MaximumPermissibleLadenMass;
+            printWindow.TBPogonskoGorivo.Text = data.VehicleData.TypeOfFuel;
+            printWindow.TBBrojMestaZaSedenje.Text = data.VehicleData.NumberOfSeats;
+            printWindow.TBBrojMestaZaStajanje.Text = data.VehicleData.NumberOfStandingPlaces;
+            printWindow.ShowDialog();
         }
     }
 }

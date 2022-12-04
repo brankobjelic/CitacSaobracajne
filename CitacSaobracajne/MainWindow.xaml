@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CitacSaobracajne"
         mc:Ignorable="d"
-        Title="MainWindow" SizeToContent="Height" Width="990" ContentRendered="Content_Rendered">
+        Title="MainWindow" SizeToContent="Height" Width="990" ContentRendered="Content_Rendered"
+        WindowStartupLocation="Manual" Left="0" Top="0"
+        ResizeMode="NoResize"
+        >
     <!--Dockpanel da bi se StatusBar postavio na dno prozora-->
     <DockPanel>
         <!--Border jer ga StatusBar nema po defaultu-->
@@ -36,6 +39,9 @@
 
                     </ComboBox>
                     <Button Margin="20, 10" Click="ButtonClickHandler">Pročitaj saobraćajnu dozvolu</Button>
+                </StackPanel>
+                <StackPanel Grid.Column="2" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Button Click="PrintButtonClickHandler">Print</Button>
                 </StackPanel>
             </Grid>
             <!--Grid jer glavni deo delimo na dve kolone-->
