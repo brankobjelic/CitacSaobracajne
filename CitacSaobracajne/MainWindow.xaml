@@ -15,7 +15,7 @@
         <Border DockPanel.Dock="Bottom" BorderThickness="1" BorderBrush="DarkGray">
             <StatusBar >
                 <StatusBarItem>
-                    <TextBlock />
+                    <TextBlock Name="TBStatusBar"/>
                 </StatusBarItem>
             </StatusBar>
         </Border>

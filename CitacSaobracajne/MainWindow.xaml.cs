@@ -54,6 +54,44 @@ namespace CitacSaobracajne
 
         private void ButtonClickHandler(object sender, RoutedEventArgs e)
         {
+            TBDrzavaIzdavanja.Text = "";
+            TBDokumentIzdao.Text = "";
+            TBDatumIzdavanja.Text = "";
+            TBVaziDo.Text = "";
+            TBZabranaOtudjenja.Text = "";
+            TBBrojDokumenta.Text = "";
+            TBSerijskiBroj.Text = "";
+            TBVlasnik.Text = "";
+            TBImeVlasnika.Text = "";
+            TBJMBGVlasnika.Text = "";
+            TBAdresaVlasnika.Text = "";
+            TBKorisnik.Text = "";
+            TBImeKorisnika.Text = "";
+            TBJMBGKorisnika.Text = "";
+            TBAdreasKorisnika.Text = "";
+            TBRegistarskiBroj.Text = "";
+            TBDatumPrveRegistracije.Text = "";
+            TBMarka.Text = "";
+            TBModel.Text = "";
+            TBGodinaProizvodnje.Text = "";
+            TBTip.Text = "";
+            TBBoja.Text = "";
+            TBBrojSasije.Text = "";
+            TBBrojMotora.Text = "";
+            TBSnagaMotora.Text = "";
+            TBMasa.Text = "";
+            TBZapreminaMotora.Text = "";
+            TBNosivostVozila.Text = "";
+            TBOdnosSnagaMasa.Text = "";
+            TBBrojOsovina.Text = "";
+            TBNajvecaDozvoljenaMasa.Text = "";
+            TBBrojMestaZaSedenje.Text = "";
+            TBBrojMestaZaStajanje.Text = "";
+            TBHomologacijskaOznaka.Text = "";
+            TBVrstaVozila.Text = "";
+            TBPogonskoGorivo.Text = "";
+
+            TBStatusBar.Text = "Započinjem čitanje...";
             ReaderDescriptor descriptor = (ReaderDescriptor)CBReaderSelector.SelectedValue;
             try
             {
@@ -98,6 +136,10 @@ namespace CitacSaobracajne
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                TBStatusBar.Text = "Kraj čitanja podataka!";
             }
         }
 
